@@ -2,3 +2,24 @@
 <body style="background-color: #ffefef"></body>
 <img src="axolotl.svg">
 <h2>AxolotlHost is Coming Soon!</h2>
+ <textarea id="textInput" rows="10" cols="50"></textarea>
+  <select id="mimeType">
+    <option value="text/plain">Plain Text</option>
+    <option value="text/html">HTML</option>
+    <option value="image/jpeg">JPEG Image</option>
+    <option value="image/png">PNG Image</option>
+    <option value="application/json">JSON</option>
+    </select>
+  <button onclick="convertText()">Convert</button>
+  <div id="result"></div>
+<script>
+    function convertText() {
+      const textInput = document.getElementById("textInput");
+      const mimeType = document.getElementById("mimeType").value;
+      const encodedText = encodeURIComponent(textInput.value);
+      const dataUrl = `data:${mimeType},${encodedText}`;
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `<a href="${dataUrl}" target="_blank">Click here to download</a>`;
+    }
+  </script>
